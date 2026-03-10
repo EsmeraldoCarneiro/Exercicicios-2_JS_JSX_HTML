@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <div>
+        Escreva código com JS, diretamente em uma página HTML, para calcular a média
+        ponderada de três notas.
+    </div>
+
+    <script>
+    /**
+     * Função auxiliar para capturar dados.
+     * Ela garante que o usuário digite um número ou cancele a operação.
+     */
+    function pedirNota(mensagem) {
+        var entrada = prompt(mensagem);
+
+        // Verifica se o usuário clicou em "Cancelar" logo de primeira
+        if (entrada === null) return null; 
+
+        var valor = parseFloat(entrada);
+        
+        // Laço de repetição: enquanto o valor não for um número válido (NaN)
+        while (isNaN(valor)) {
+            alert("Entrada inválida! Digite apenas números ou cancele para sair.");
+            entrada = prompt(mensagem);
+            
+            // Verifica novamente se o usuário quer cancelar dentro do loop
+            if (entrada === null) return null; 
+            valor = parseFloat(entrada);
+        }
+        // Retorna o número pronto para o cálculo
+        return valor;
+    }    
+
+    /**
+     * Função principal que gerencia a entrada de todas as notas e pesos.
+     */
+    function executarTudo() {
+        // Captura cada nota e peso. 
+        // Se qualquer função retornar 'null' (cancelar), o 'return' abaixo interrompe a função inteira imediatamente.
+        var n1 = pedirNota("Nota 1:"); if (n1 === null) return;
+        var p1 = pedirNota("Peso 1:"); if (p1 === null) return;
+        var n2 = pedirNota("Nota 2:"); if (n2 === null) return;
+        var p2 = pedirNota("Peso 2:"); if (p2 === null) return;
+        var n3 = pedirNota("Nota 3:"); if (n3 === null) return;
+        var p3 = pedirNota("Peso 3:"); if (p3 === null) return;
+
+        // Cálculo da soma dos pesos para o denominador
+        var somaPesos = p1 + p2 + p3;
+        
+        // Validação matemática: não existe divisão por zero
+        if (somaPesos > 0) {
+            // Fórmula da média ponderada: (n1*p1 + n2*p2 + n3*p3) / soma dos pesos
+            var resultado = ((n1 * p1) + (n2 * p2) + (n3 * p3)) / somaPesos;
+            
+            // Formata o número para ter apenas uma casa decimal
+            var mediaFinal = resultado.toFixed(1);
+
+            // Exibe o resultado em um pop-up
+            alert('Média ponderada: ' + mediaFinal);
+
+            // Escreve o resultado no corpo da página
+            document.write('<br/>A média ponderada das notas é: <strong>' + mediaFinal + '</strong>');
+        } else {
+            // Caso os pesos somados resultem em zero ou vazio
+            alert('A soma dos pesos não pode ser zero!');
+        }
+    }
+    
+    // Inicia o programa
+    executarTudo();
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <div>
+        Escreva código com JS, diretamente em uma página HTML, para inserir as
+        tags de cabeçalhos (de <strong>h1</strong> a <strong>h6</strong>).
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+        'use strict'; // Ativa o modo restrito para evitar erros comuns de declaração de variáveis
+
+        /**
+         * React.createElement(tipo, propriedades, ...filhos)
+         * Aqui estamos criando um elemento pai 'div' que contém 6 filhos (h6 a h1).
+         * Como não estamos usando Babel/JSX, usamos essa função nativa do React.
+         */
+        var meuElemento = React.createElement(
+            'div',  // 1º argumento: O tipo do elemento
+            null,   // 2º argumento: As propriedades (props) como id ou class (neste caso, nenhuma)
+            
+            // 3º argumento em diante: Os elementos filhos
+            React.createElement('h6', null, 'Gato é h6'),
+            React.createElement('h5', null, 'Cachorro é h5'),
+            React.createElement('h4', null, 'Rato é h4'),
+            React.createElement('h3', null, 'Passarinho é h3'),
+            React.createElement('h2', null, 'Tartaruga é h2'),
+            React.createElement('h1', null, 'Elefante é h1')
+        );
+
+        // Renderização (Padrão React 18):
+        
+        // 1. Localiza o elemento do HTML onde o React vai trabalhar
+        const container = document.getElementById("root");
+        
+        // 2. Cria a raiz (root) do React nesse container
+        const root = ReactDOM.createRoot(container);
+        
+        // 3. Renderiza (desenha) o 'meuElemento' dentro da raiz criada
+        root.render(meuElemento);
+    </script>
+</body>
+
+</html>

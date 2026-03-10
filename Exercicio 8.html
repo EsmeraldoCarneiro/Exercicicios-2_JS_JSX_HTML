@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div>
+        Escreva código com JSX, diretamente em uma página HTML, para inserir uma tabela JSX com os
+        nomes João e Maria.
+    </div>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        'use strict'; 
+
+        /**
+         * Isso é JSX! 
+         * Note que não há aspas em volta da tabela. O código HTML é escrito 
+         * diretamente no JavaScript.
+         */
+        const meuElemento = (
+            // Em JSX, o atributo 'style' recebe um objeto JS, por isso as chaves duplas {{ }}
+            <table border="1" style={{ width: '200px', textAlign: 'center', borderCollapse: 'collapse' }}>
+                <thead>
+                    <tr>
+                        {/* Célula de cabeçalho com estilo de cor de fundo */}
+                        <th style={{ backgroundColor: '#f2f2f2' }}>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>João</td>
+                    </tr>
+                    <tr>
+                        <td>Maria</td>
+                    </tr>
+                </tbody>
+            </table>
+        );
+
+        // Processo de Renderização (Padrão Moderno do React 18):
+        
+        // 1. Seleciona o elemento 'root' do HTML
+        const container = document.getElementById('root');
+        
+        // 2. Cria a raiz do React associada ao container
+        const root = ReactDOM.createRoot(container);
+        
+        // 3. Renderiza o elemento JSX na tela
+        root.render(meuElemento);
+
+    </script>
+</body>
+
+</html>

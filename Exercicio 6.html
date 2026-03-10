@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06 - Soma dos Quadrados</title>
+</head>
+
+<body>
+    <div>
+        Escreva código com JS, diretamente em uma página HTML, para calcular a soma dos
+        quadrados de três números inteiros.
+    </div>
+
+    <script>
+        // 1. Entrada de dados:
+        // Usamos o operador unário '+' antes do parseFloat como uma forma rápida de garantir o tipo numérico.
+        const num1 = +parseFloat(prompt("Informe o primeiro número:"));
+        const num2 = +parseFloat(prompt("Informe o segundo número:"));
+        const num3 = +parseFloat(prompt("Informe o terceiro número:"));
+
+        /**
+         * Função para processar a soma dos quadrados.
+         * Substituímos Math.pow(x, 2) por x ** 2 para maior legibilidade e performance.
+         */
+        function calcSomaDosQuadrados() {
+            // 2. Processamento Individual:
+            // Calculamos o quadrado de cada número uma única vez.
+            const v1 = num1 ** 2;
+            const v2 = num2 ** 2;
+            const v3 = num3 ** 2;
+
+            // 3. Processamento Total:
+            // Reutilizamos as variáveis v1, v2 e v3 para evitar cálculos repetitivos (Princípio DRY).
+            const somaTotal = v1 + v2 + v3;
+
+            // 4. Alerta corrigido:
+            alert(`A soma dos quadrados é: ${somaTotal}`);
+            
+            // 5. Saída no HTML:
+            // O Template Literal permite injetar as variáveis diretamente na estrutura da lista <ul>.
+            document.write(`
+                <br><strong>Valores e seus quadrados:</strong>
+                <ul>
+                    <li><strong>Primeiro valor:</strong> ${num1} &nbsp;&nbsp; <strong>Quadrado:</strong> ${v1}</li>
+                    <li><strong>Segundo valor:</strong> ${num2} &nbsp;&nbsp; <strong>Quadrado:</strong> ${v2}</li>
+                    <li><strong>Terceiro valor:</strong> ${num3} &nbsp;&nbsp; <strong>Quadrado:</strong> ${v3}</li>
+                </ul>
+                <strong>A soma dos quadrados é:</strong> ${somaTotal}
+            `);
+        }
+
+        // 6. Chamada da função.
+        calcSomaDosQuadrados();
+    </script>
+</body>
+
+</html>

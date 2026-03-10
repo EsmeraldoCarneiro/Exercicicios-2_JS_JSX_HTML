@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+
+<body>
+    <div>Escreva código com JS, diretamente em uma página HTML, para calcular o quadrado de um número.</div>
+    
+    <script>
+        /**
+         * Função para capturar um número, validar a entrada e calcular seu quadrado.
+         */
+        function quadrado() {
+            // Abre uma caixa de entrada para o usuário
+            var entrada = prompt("Digite o número para calcular o quadrado: ");
+            
+            // Tenta converter o texto digitado em um número de ponto flutuante
+            var a = parseFloat(entrada);
+
+            // Verificação de Fluxo:
+            
+            if (!isNaN(a)) {
+                // Caso 1: Se 'a' for um número válido (is Not a Number é falso)
+                var calc = Math.pow(a, 2); // Calcula a base 'a' elevada ao expoente 2
+                
+                alert('O quadrado de ' + a + ' é: ' + calc);
+                
+                // Exibe o resultado diretamente no corpo do HTML
+                document.write('<br/>O quadrado de <strong>' + a + '</strong> é: <strong>' + calc + '</strong>');
+            }
+            else if (entrada === null) {
+                // Caso 2: Se o usuário clicou em "Cancelar", a variável 'entrada' recebe null
+                alert('Operação cancelada pelo usuário.');
+            }
+            else {
+                // Caso 3: O usuário digitou texto vazio ou letras
+                alert('Erro: "' + entrada + '" não é um valor válido!');
+                
+                // RECURSIVIDADE: A função chama a si mesma para reiniciar o processo
+                quadrado(); 
+            }
+        }
+
+        // Inicializa a execução da função ao carregar a página
+        quadrado();
+        
+    </script>
+</body>
+
+</html>
